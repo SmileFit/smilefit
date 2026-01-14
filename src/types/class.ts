@@ -22,3 +22,4 @@ export interface Class {
   description: string // Full description
   badge?: "Most Popular" | "New"
 }
+// comment for vercel deploy
