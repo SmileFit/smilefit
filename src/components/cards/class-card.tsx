@@ -7,14 +7,11 @@ import { Button } from "@/components/ui/button"
 import { Class } from "@/types"
 
 interface ClassCardProps {
-  class: Class
+  classItem: Class
   variant?: "default" | "featured"
 }
 
-export function ClassCard({
-  class: classData,
-  variant = "default",
-}: ClassCardProps) {
+export function ClassCard({ classItem, variant = "default" }: ClassCardProps) {
   const isFeatured = variant === "featured"
 
   return (
@@ -25,8 +22,8 @@ export function ClassCard({
     >
       <div className="relative aspect-[4/3]">
         <Image
-          src={classData.image}
-          alt={classData.title}
+          src={classItem.image}
+          alt={classItem.title}
           fill
           className="object-cover"
           sizes={
@@ -37,13 +34,13 @@ export function ClassCard({
         />
         <div className="absolute top-3 left-3">
           <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm">
-            {classData.category}
+            {classItem.category}
           </Badge>
         </div>
-        {classData.badge && (
+        {classItem.badge && (
           <div className="absolute top-3 right-3">
             <Badge className="bg-primary/90 backdrop-blur-sm">
-              {classData.badge}
+              {classItem.badge}
             </Badge>
           </div>
         )}
@@ -51,27 +48,27 @@ export function ClassCard({
 
       <CardContent className="p-4 space-y-3">
         <h3 className="font-semibold text-lg line-clamp-2">
-          {classData.title}
+          {classItem.title}
         </h3>
 
         <div className="space-y-2 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4 flex-shrink-0" />
-            <span>{classData.schedule}</span>
+            <span>{classItem.schedule}</span>
           </div>
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 flex-shrink-0" />
-            <span className="line-clamp-1">{classData.location}</span>
+            <span className="line-clamp-1">{classItem.location}</span>
           </div>
           <div className="flex items-center gap-2">
             <User className="h-4 w-4 flex-shrink-0" />
-            <span>{classData.instructor}</span>
+            <span>{classItem.instructor}</span>
           </div>
         </div>
 
         {isFeatured && (
           <p className="text-sm text-muted-foreground line-clamp-2">
-            {classData.description}
+            {classItem.description}
           </p>
         )}
       </CardContent>
@@ -79,7 +76,7 @@ export function ClassCard({
       <CardFooter className="p-4 pt-0 flex items-center justify-between">
         <div className="flex items-center gap-1 font-semibold text-lg">
           <Euro className="h-5 w-5" />
-          <span>{classData.price}</span>
+          <span>{classItem.price}</span>
         </div>
         <Button asChild size={isFeatured ? "default" : "sm"}>
           <Link href="/contact">Learn More</Link>

@@ -15,12 +15,19 @@ export function StepCard({
   description,
   variant = "numbered",
 }: StepCardProps) {
-  const Icon = LucideIcons[icon] as React.ComponentType<{ className?: string }>
+  const IconComponent = LucideIcons[icon]
+
+  if (!IconComponent || typeof IconComponent !== "function") {
+    console.warn(`StepCard: Invalid icon "${icon}"`)
+    return null
+  }
+
+  const Icon = IconComponent as React.ComponentType<{ className?: string }>
 
   return (
     <div className="relative text-center space-y-4">
       <div className="flex justify-center">
-        {variant === "numbered" && stepNumber ? (
+        {variant === "numbered" && stepNumber !== undefined ? (
           <div className="relative">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary text-primary-foreground text-2xl font-bold">
               {stepNumber}

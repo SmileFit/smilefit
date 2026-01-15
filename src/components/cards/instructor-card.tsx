@@ -37,8 +37,8 @@ export function InstructorCard({ instructor }: InstructorCardProps) {
         </p>
 
         <div className="flex flex-wrap gap-2 justify-center">
-          {instructor.specialties.map((specialty) => (
-            <Badge key={specialty} variant="secondary">
+          {instructor.specialties.map((specialty, index) => (
+            <Badge key={`${specialty}-${index}`} variant="secondary">
               {specialty}
             </Badge>
           ))}

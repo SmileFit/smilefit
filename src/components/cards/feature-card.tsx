@@ -13,7 +13,14 @@ export function FeatureCard({
   description,
   variant = "vertical",
 }: FeatureCardProps) {
-  const Icon = LucideIcons[icon] as React.ComponentType<{ className?: string }>
+  const IconComponent = LucideIcons[icon]
+
+  if (!IconComponent || typeof IconComponent !== "function") {
+    console.warn(`FeatureCard: Invalid icon "${icon}"`)
+    return null
+  }
+
+  const Icon = IconComponent as React.ComponentType<{ className?: string }>
 
   if (variant === "horizontal") {
     return (

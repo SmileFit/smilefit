@@ -1,19 +1,24 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+export interface CTALink {
+  text: string
+  href: string
+}
+
 interface CTABannerProps {
   title: string
   subtitle?: string
-  primaryCTA: {
-    text: string
-    href: string
-  }
-  secondaryCTA?: {
-    text: string
-    href: string
-  }
+  primaryCTA: CTALink
+  secondaryCTA?: CTALink
   variant?: "blue" | "gray" | "gradient"
 }
+
+const variantStyles = {
+  blue: "bg-primary text-primary-foreground",
+  gray: "bg-muted text-foreground",
+  gradient: "bg-gradient-to-r from-primary to-blue-600 text-primary-foreground",
+} as const
 
 export function CTABanner({
   title,
@@ -22,13 +27,6 @@ export function CTABanner({
   secondaryCTA,
   variant = "blue",
 }: CTABannerProps) {
-  const variantStyles = {
-    blue: "bg-primary text-primary-foreground",
-    gray: "bg-muted text-foreground",
-    gradient:
-      "bg-gradient-to-r from-primary to-blue-600 text-primary-foreground",
-  }
-
   return (
     <section className={`py-16 sm:py-20 ${variantStyles[variant]}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

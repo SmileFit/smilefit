@@ -24,9 +24,9 @@ export function PageHeader({ title, subtitle, cta }: PageHeaderProps) {
           )}
           {cta && cta.length > 0 && (
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              {cta.map((button, index) => (
+              {cta.map((button) => (
                 <Button
-                  key={index}
+                  key={button.href}
                   asChild
                   size="lg"
                   variant={button.variant || "default"}
