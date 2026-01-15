@@ -1,3 +1,4 @@
+import type { ComponentType } from "react"
 import * as LucideIcons from "lucide-react"
 
 interface StepCardProps {
@@ -15,7 +16,7 @@ export function StepCard({
   description,
   variant = "numbered",
 }: StepCardProps) {
-  const Icon = LucideIcons[icon] as React.ComponentType<{ className?: string }>
+  const Icon = LucideIcons[icon] as ComponentType<{ className?: string }>
 
   if (!Icon) {
     console.warn(`StepCard: Invalid icon "${icon}"`)
