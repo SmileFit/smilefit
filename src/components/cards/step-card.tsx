@@ -15,14 +15,12 @@ export function StepCard({
   description,
   variant = "numbered",
 }: StepCardProps) {
-  const IconComponent = LucideIcons[icon]
+  const Icon = LucideIcons[icon] as React.ComponentType<{ className?: string }>
 
-  if (!IconComponent || typeof IconComponent !== "function") {
+  if (!Icon) {
     console.warn(`StepCard: Invalid icon "${icon}"`)
     return null
   }
-
-  const Icon = IconComponent as React.ComponentType<{ className?: string }>
 
   return (
     <div className="relative text-center space-y-4">
