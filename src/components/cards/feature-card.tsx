@@ -1,3 +1,4 @@
+import type { ComponentType } from "react"
 import * as LucideIcons from "lucide-react"
 
 interface FeatureCardProps {
@@ -13,14 +14,12 @@ export function FeatureCard({
   description,
   variant = "vertical",
 }: FeatureCardProps) {
-  const IconComponent = LucideIcons[icon]
+  const Icon = LucideIcons[icon] as ComponentType<{ className?: string }>
 
-  if (!IconComponent || typeof IconComponent !== "function") {
+  if (!Icon) {
     console.warn(`FeatureCard: Invalid icon "${icon}"`)
     return null
   }
-
-  const Icon = IconComponent as React.ComponentType<{ className?: string }>
 
   if (variant === "horizontal") {
     return (
