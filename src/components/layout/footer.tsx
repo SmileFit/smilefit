@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Facebook, Instagram, Twitter } from "lucide-react"
+import { siteConfig } from "@/lib/data"
 
 export function Footer() {
   return (
@@ -17,29 +18,29 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Facebook"
+                aria-label="Facebook (opens in new tab)"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+                href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Instagram"
+                aria-label="Instagram (opens in new tab)"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com"
+                href={siteConfig.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Twitter"
+                aria-label="Twitter (opens in new tab)"
               >
                 <Twitter className="h-5 w-5" />
               </a>
